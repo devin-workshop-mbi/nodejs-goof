@@ -29,7 +29,22 @@ import {
   Link as LinkIcon,
   File,
   ListTodo,
-  StickyNote
+  StickyNote,
+  Kanban,
+  BookMarked,
+  Sparkles,
+  Cpu,
+  GraduationCap,
+  Youtube,
+  Rss,
+  FolderOpen,
+  Database,
+  Globe,
+  MessageSquare,
+  Lightbulb,
+  Rocket,
+  Bot,
+  Zap
 } from 'lucide-react'
 
 // Types
@@ -79,6 +94,59 @@ const PRIORITY_CONFIG = {
   'medium': { label: 'Medium', color: 'bg-yellow-500' },
   'high': { label: 'High', color: 'bg-red-500' },
   'none': { label: 'None', color: 'bg-gray-300' },
+}
+
+// Quick Links for each section
+interface QuickLink {
+  id: string
+  title: string
+  description: string
+  url: string
+  icon: React.ReactNode
+  color: string
+}
+
+const QUICK_LINKS: Record<Section, QuickLink[]> = {
+  'vans-operations': [
+    { id: 'jira', title: 'JIRA', description: 'Project & Issue Tracking', url: 'https://jira.atlassian.com', icon: <Kanban className="h-6 w-6" />, color: 'bg-blue-500' },
+    { id: 'confluence', title: 'Confluence', description: 'Documentation & Wiki', url: 'https://confluence.atlassian.com', icon: <BookMarked className="h-6 w-6" />, color: 'bg-blue-600' },
+    { id: 'slack', title: 'Slack', description: 'Team Communication', url: 'https://slack.com', icon: <MessageSquare className="h-6 w-6" />, color: 'bg-purple-500' },
+    { id: 'github', title: 'GitHub', description: 'Code Repository', url: 'https://github.com', icon: <Database className="h-6 w-6" />, color: 'bg-gray-800' },
+    { id: 'sharepoint', title: 'SharePoint', description: 'Document Management', url: 'https://sharepoint.com', icon: <FolderOpen className="h-6 w-6" />, color: 'bg-teal-500' },
+    { id: 'teams', title: 'MS Teams', description: 'Video & Chat', url: 'https://teams.microsoft.com', icon: <Globe className="h-6 w-6" />, color: 'bg-indigo-500' },
+  ],
+  'ai-department': [
+    { id: 'ai-portal', title: 'AI Portal', description: 'Internal AI Dashboard', url: '#', icon: <Brain className="h-6 w-6" />, color: 'bg-purple-500' },
+    { id: 'ml-platform', title: 'ML Platform', description: 'Machine Learning Tools', url: '#', icon: <Cpu className="h-6 w-6" />, color: 'bg-pink-500' },
+    { id: 'ai-usecases', title: 'AI Use Cases', description: 'Department Projects', url: '#', icon: <Lightbulb className="h-6 w-6" />, color: 'bg-yellow-500' },
+    { id: 'model-registry', title: 'Model Registry', description: 'AI Model Catalog', url: '#', icon: <Database className="h-6 w-6" />, color: 'bg-green-500' },
+    { id: 'ai-docs', title: 'AI Documentation', description: 'Guidelines & Standards', url: '#', icon: <BookMarked className="h-6 w-6" />, color: 'bg-blue-500' },
+    { id: 'ai-support', title: 'AI Support', description: 'Help & Resources', url: '#', icon: <MessageSquare className="h-6 w-6" />, color: 'bg-orange-500' },
+  ],
+  'ai-learning': [
+    { id: 'coursera', title: 'Coursera', description: 'Online Courses', url: 'https://www.coursera.org/browse/data-science/machine-learning', icon: <GraduationCap className="h-6 w-6" />, color: 'bg-blue-600' },
+    { id: 'deeplearning', title: 'DeepLearning.AI', description: 'AI Specializations', url: 'https://www.deeplearning.ai', icon: <Brain className="h-6 w-6" />, color: 'bg-red-500' },
+    { id: 'huggingface', title: 'Hugging Face', description: 'ML Models & Datasets', url: 'https://huggingface.co/learn', icon: <Bot className="h-6 w-6" />, color: 'bg-yellow-500' },
+    { id: 'kaggle', title: 'Kaggle', description: 'Competitions & Notebooks', url: 'https://www.kaggle.com/learn', icon: <Rocket className="h-6 w-6" />, color: 'bg-cyan-500' },
+    { id: 'fastai', title: 'Fast.ai', description: 'Practical Deep Learning', url: 'https://www.fast.ai', icon: <Zap className="h-6 w-6" />, color: 'bg-purple-600' },
+    { id: 'youtube-ai', title: 'AI YouTube', description: 'Video Tutorials', url: 'https://www.youtube.com/results?search_query=machine+learning+tutorial', icon: <Youtube className="h-6 w-6" />, color: 'bg-red-600' },
+  ],
+  'ai-news': [
+    { id: 'openai', title: 'OpenAI Blog', description: 'GPT & DALL-E Updates', url: 'https://openai.com/blog', icon: <Sparkles className="h-6 w-6" />, color: 'bg-green-500' },
+    { id: 'anthropic', title: 'Anthropic', description: 'Claude AI News', url: 'https://www.anthropic.com/news', icon: <Bot className="h-6 w-6" />, color: 'bg-orange-500' },
+    { id: 'google-ai', title: 'Google AI Blog', description: 'Gemini & Research', url: 'https://blog.google/technology/ai/', icon: <Brain className="h-6 w-6" />, color: 'bg-blue-500' },
+    { id: 'mit-news', title: 'MIT AI News', description: 'Research & Innovation', url: 'https://news.mit.edu/topic/artificial-intelligence2', icon: <GraduationCap className="h-6 w-6" />, color: 'bg-red-600' },
+    { id: 'arxiv', title: 'arXiv AI', description: 'Latest Papers', url: 'https://arxiv.org/list/cs.AI/recent', icon: <FileText className="h-6 w-6" />, color: 'bg-gray-700' },
+    { id: 'techcrunch', title: 'TechCrunch AI', description: 'Industry News', url: 'https://techcrunch.com/category/artificial-intelligence/', icon: <Rss className="h-6 w-6" />, color: 'bg-green-600' },
+  ],
+  'ai-documents': [
+    { id: 'gdrive', title: 'Google Drive', description: 'Cloud Documents', url: 'https://drive.google.com', icon: <FolderOpen className="h-6 w-6" />, color: 'bg-yellow-500' },
+    { id: 'notion', title: 'Notion', description: 'Notes & Wikis', url: 'https://www.notion.so', icon: <BookMarked className="h-6 w-6" />, color: 'bg-gray-800' },
+    { id: 'dropbox', title: 'Dropbox', description: 'File Storage', url: 'https://www.dropbox.com', icon: <Database className="h-6 w-6" />, color: 'bg-blue-500' },
+    { id: 'onedrive', title: 'OneDrive', description: 'Microsoft Storage', url: 'https://onedrive.live.com', icon: <Globe className="h-6 w-6" />, color: 'bg-blue-600' },
+    { id: 'sharepoint-docs', title: 'SharePoint', description: 'Enterprise Docs', url: 'https://sharepoint.com', icon: <FolderOpen className="h-6 w-6" />, color: 'bg-teal-500' },
+    { id: 'confluence-docs', title: 'Confluence', description: 'Team Documentation', url: 'https://confluence.atlassian.com', icon: <BookMarked className="h-6 w-6" />, color: 'bg-blue-700' },
+  ],
 }
 
 // Local Storage Key
@@ -695,8 +763,38 @@ function App() {
                 })()}
               </div>
 
+              {/* Quick Links */}
+              <Card className="mb-6">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-lg flex items-center gap-2">
+                    <ExternalLink className="h-5 w-5" />
+                    Quick Links
+                  </CardTitle>
+                  <CardDescription>Quick access to your tools and resources</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                    {QUICK_LINKS[section.id].map(link => (
+                      <a
+                        key={link.id}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex flex-col items-center p-4 rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-200 bg-white"
+                      >
+                        <div className={`p-3 rounded-full ${link.color} text-white mb-3 group-hover:scale-110 transition-transform`}>
+                          {link.icon}
+                        </div>
+                        <span className="font-medium text-gray-900 text-center text-sm">{link.title}</span>
+                        <span className="text-xs text-gray-500 text-center mt-1">{link.description}</span>
+                      </a>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
               {/* Items List */}
-              <ScrollArea className="h-[calc(100vh-450px)]">
+              <ScrollArea className="h-[calc(100vh-650px)]">
                 {filteredItems.length === 0 ? (
                   <Card>
                     <CardContent className="py-12 text-center">
