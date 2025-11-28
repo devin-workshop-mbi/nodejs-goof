@@ -15,7 +15,7 @@
     "test": "snyk test"
   },
   "dependencies": {
-    "adm-zip": "0.4.7",
+    "adm-zip": "^0.4.11",
     "body-parser": "1.9.0",
     "cfenv": "^1.0.4",
     "consolidate": "0.14.5",
@@ -28,11 +28,11 @@
     "express-fileupload": "0.0.5",
     "express-session": "^1.17.2",
     "file-type": "^8.1.0",
-    "hbs": "^4.0.4",
+    "hbs": "^4.1.0",
     "humanize-ms": "1.0.1",
     "jquery": "^2.2.4",
     "lodash": "4.17.4",
-    "marked": "0.3.5",
+    "marked": "^0.3.6",
     "method-override": "latest",
     "moment": "2.15.1",
     "mongodb": "^3.5.9",
@@ -53,5 +53,10 @@
     "nodemon": "^2.0.7",
     "snyk": "^1.244.0"
   },
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+    "overrides": {
+      "sha.js": "2.4.12",
+      "form-data": "4.0.4",
+      "handlebars": "4.7.8"
+    }
 }
