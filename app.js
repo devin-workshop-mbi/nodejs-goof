@@ -71,9 +71,11 @@ app.use('/users', routesUsers)
 // Static
 app.use(st({ path: './public', url: '/public' }));
 
-// Add the option to output (sanitized!) markdown
-marked.setOptions({ sanitize: true });
-app.locals.marked = marked;
+// Add the option to output markdown
+// Note: sanitize option was removed in marked 4.x, use DOMPurify for sanitization if needed
+app.locals.marked = function(text) {
+  return marked.parse(String(text));
+};
 
 // development only
 if (app.get('env') == 'development') {
